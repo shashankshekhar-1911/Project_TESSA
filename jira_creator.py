@@ -31,11 +31,11 @@ def create_ticket(jira_fields):
         "Accept": "application/json",
         "Content-Type": "application/json"
     }
-    print(jira_fields)
-    # response = requests.post(url, auth=auth, headers=headers, json=jira_fields)
-    # if response.status_code in [200,201]:
-    #   print(response.json())
-    # else:
-    #   print(f"Failed to create issue: {response.status_code} {response.text}")
+    
+    response = requests.post(url, auth=auth, headers=headers, json=jira_fields)
+    if response.status_code in [200,201]:
+      print(response.json())
+    else:
+      print(f"Failed to create issue: {response.status_code} {response.text}")
 
 
