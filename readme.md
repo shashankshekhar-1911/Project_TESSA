@@ -1,3 +1,9 @@
+***Current Code***
+1. Takes client email as a .eml file
+2. Extracts relevant metadata and insights from the email
+3. Creates a jira ticket with relevant fields
+
+
 ***Project Manager Agent***
 A project manager agent is supposed to make the job of a project manager easier. Following are some key tasks done by a project
 manager
