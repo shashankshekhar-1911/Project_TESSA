@@ -1,0 +1,241 @@
+Delivered-To: shashank.1911@gmail.com
+Received: by 2002:a05:6a11:3dc8:b0:5cf:f74c:246d with SMTP id bn8csp1642062pxc;
+        Sun, 19 Jan 2025 13:31:40 -0800 (PST)
+X-Received: by 2002:a17:907:3da4:b0:ab3:8767:b958 with SMTP id a640c23a62f3a-ab38b44e0f8mr1040527566b.45.1737322300119;
+        Sun, 19 Jan 2025 13:31:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737322300; cv=none;
+        d=google.com; s=arc-20240605;
+        b=EpKw88FB/ILkbtA05PF+ihaH/EVzYvAXyk6F3q50ThhGaAbc5I2H+tUfKDUW6uzZ27
+         wvlr06TUkfJroKYQPCYPT5MW7nilGyBwuvKGukEoSdleWHpUj+XLbdkSBiSZSD+u6br+
+         4FiLD5nVtqxj3Tnkxu3hpwXpWVH+/TedZZc6MRhxcPLqJhKKyK5DaaihNdh80HR1nimt
+         ADhQQ4/M/aO4dnNIGlVrKLc9TvQhm5chLJpbV0nTokkAoUIkiyDMqbZTLis8X88pQMjO
+         dN5qaMVg7SIn4056flaiqJJNHCUvhdVH4OEulIRcSjZ5I+nvstuV/b74S2M2C4RiMiX1
+         dA/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=TNn8ggsprAzye3fXIXmAI4e49N+5SvH5wqbbVxWHYpw=;
+        fh=huzgTCorbkmbll309+p8oek/EUoCF/lXIdx6vOAwKDc=;
+        b=BKP77y6mOuKvcu1keN3jkMd7LcmUcr+VaUHerdPzkFhv1gWR0tBwj9Tn4EEKYA7Ozw
+         xy9GQcT887n0aHgq14f/O366Na52JxIo18TtPJHnXfDJy4WX01f2Va1uUq03HBNUdMfU
+         39M9Xrv7SKdVObAAKjYDk63Pgffpxxe6KkPzCyB3jDPdc1y1YGWuBrEivLwJDcsPXqs4
+         8jjS0vF7/9oWkhuvbGvw8oJ9r0zNQIkITZQdvIsxe/iYmjLB/1G+TZEK80AOfjDSHlrn
+         CxiXxPpgJ03W56TOM8oMW9QFER6QHCRawZdUsCrH/erG4Qebip0GfE3UNR9cgKC9p4uT
+         aIYw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@shekhar-quest.20230601.gappssmtp.com header.s=20230601 header.b=ju2cj5EH;
+       spf=pass (google.com: domain of shashank@shekhar.quest designates 209.85.220.41 as permitted sender) smtp.mailfrom=shashank@shekhar.quest;
+       dara=pass header.i=@gmail.com
+Return-Path: <shashank@shekhar.quest>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-ab384ccf639sor222823966b.2.2025.01.19.13.31.39
+        for <shashank.1911@gmail.com>
+        (Google Transport Security);
+        Sun, 19 Jan 2025 13:31:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of shashank@shekhar.quest designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@shekhar-quest.20230601.gappssmtp.com header.s=20230601 header.b=ju2cj5EH;
+       spf=pass (google.com: domain of shashank@shekhar.quest designates 209.85.220.41 as permitted sender) smtp.mailfrom=shashank@shekhar.quest;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=shekhar-quest.20230601.gappssmtp.com; s=20230601; t=1737322299; x=1737927099; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=TNn8ggsprAzye3fXIXmAI4e49N+5SvH5wqbbVxWHYpw=;
+        b=ju2cj5EH4ff6HjK/OMn5xJBARMizzFUlH5xeRI4dr/jsLAc7/pOJqyVsoPhX1nsUo+
+         S+9mJWjDUzmU2ubh3Rjb9NFtSf0lZd7I615NnGtRghai+gwmToQISntZJtwTe2lV18TJ
+         3c9dxcxh89bW77ZdqfM3GQ905AC9VXpMJHHc7KflZWGew/OZJkW/VLdj222M8CgBaZZP
+         nqtMsItreeMvevAGCKAcSjW/eMd+MUJQ9TfdOjWb8KPf20TXk4f9l+LcychcAdwBcbcG
+         5KjcFfiZKncPtYId/QoxE+/htM2+FUL0W4Vi5/zBCW67nxKEK7Fvft1Io24STCAPvzWz
+         1Icg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737322299; x=1737927099;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TNn8ggsprAzye3fXIXmAI4e49N+5SvH5wqbbVxWHYpw=;
+        b=XNTzVq08ybbVKkiuEKw9w2pVru2xPAvHcTqlMPkKDQ3tvzwk5G/4vS8c1tTGQVOSJA
+         GQPeFWTkobq6blZXDHKu6wzP8ULFCvWB8KSXmhoW3vtVNkEqgonpRRwaWChe+ODGR53T
+         ExBY1BF3laBzRLYw2ySZ83+m73FzN65dwffdSc5j9E5fw1vAxguVAtrW6Cs4twJfA2ko
+         4KGMOurcvctNxeltMyNg9cuKOMDawoQTuvAfDbmAs3aSkdepSd1MnpU1yaWRswqKH8/r
+         K/6aVXkkRhtWx43WjUsAG2n0NWKpZc/lSMHE7cB6OF8gQjV034mZ/VW3WqnyksUUrJaR
+         sdJA==
+X-Gm-Message-State: AOJu0YzTzbAjTAfiPDQJ6lqXI69NMEN+9JWUSokMeMZHDsNJSNuRfI2B
+	qDpkbkFRZahRe3T389tdEFlLBnOtCryVnD1rcCgyncxEMcbeOWOCVSV9JxPs8Ej1uyeAQ1PYUVG
+	/bzoevzpctYCZhw1OCXP2kszSoVClj/JpYxxL4Ro+PgSgt1cZMmk=
+X-Gm-Gg: ASbGnctXHyw6xnjJWH9juk1N89dfR/dFCocZOhnX8mcFls06yyC9+4GL9V6P1kqWKg2
+	hmOs7loDFC9Lq3kebIC+OcTwzEx903LWcV89bsdpdxKO30zp9QoWG6yL/OYynBSCTdhw9LT4dmg
+	CnytlaHDQj
+X-Google-Smtp-Source: AGHT+IH6ejmhXUPammqIzKsTm8GNkp2zVWdhemlf6AR+z8hdmtcrDKRE67+aHjq8Rti/Q+pnsYUglJgDdjCF0C65OsI=
+X-Received: by 2002:a17:907:7256:b0:aae:85b4:a07 with SMTP id
+ a640c23a62f3a-ab38b19146dmr878892366b.8.1737322299081; Sun, 19 Jan 2025
+ 13:31:39 -0800 (PST)
+MIME-Version: 1.0
+From: Shashank Shekhar <shashank@shekhar.quest>
+Date: Mon, 20 Jan 2025 03:01:28 +0530
+X-Gm-Features: AbW1kvYBhFNIXJgSkUdptyYm_83sToGOnaiMTRlkM-DQ3TuGHPxcQvebdTxa43Y
+Message-ID: <CAHZzZX8b8drJrougf+hJy2ZVMR6zHsMYArLdFa0BBQ2UnOB=3w@mail.gmail.com>
+Subject: API support required
+To: Shashank Shekhar <shashank.1911@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000007f60ba062c15de95"
+
+--0000000000007f60ba062c15de95
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi, AiDash team.
+
+
+
+While doing a full re-load last month to =E2=80=9Cheal=E2=80=9D the data is=
+sues from 11/24,
+we noticed an odd behavior of the work items API endpoint. I don=E2=80=99t =
+*think*
+it=E2=80=99s causing a problem since we deduplicate on workId, but we=E2=80=
+=99d like to see
+if you have an explanation to ensure that there=E2=80=99s not some nuance w=
+e are
+missing. Can you please review and provide feedback?
+
+
+Thanks!
+
+
+Repro Steps.
+
+Best run off-hours to eliminate any chance if interference from concurrent
+edits, but ultimately timing does not matter.
+
+
+In PROD, call the work_items endpoint and repeat with limit+offset to
+retrieve all pages. We are using updated_from=3D2023-03-01 to present
+(2025-01-06 in this case). We are using a page size of 3000.
+Note that in tonight=E2=80=99s test I called via Avista=E2=80=99s proxy API=
+ endpoint but I
+have also run this test directly calling the AiDash API and observed the
+same behavior.
+Count the number of records returned across all responses.
+Count the number of distinct records returned across all responses by
+workId.
+
+
+Observed
+
+I=E2=80=99ve attempted to share a combined JSON file of the result sets wit=
+h added
+attributes to indicate the page/sequence of the API call that returned each
+record. It=E2=80=99s the first time I=E2=80=99ve tried sharing this way ext=
+ernally, so
+please let me know if it doesn=E2=80=99t work: zip icon
+aidash_mulesoft_20250107043500_all_results.zip
+
+
+
+Using numbers from this evening as an example (approx. 8:30p Pacific time):
+
+
+Total records/objects retrieved: 97,137
+Total unique records: 96,890 (247 duplicates)
+Count returned by the last API response: 97,137
+
+Note that in the UAT environment, I did not see this issue today. The total
+number of records matches the unique records and that also agrees with the
+count returned in the API responses.
+
+
+Examining the duplicate work items tonight and in previous runs, a few
+observations:
+
+Duplicates are never in the same =E2=80=9Cpage=E2=80=9D/response (good)
+When duplicates exist for a workId, I=E2=80=99ve only ever seen two matchin=
+g
+records; never 3 or more.
+I believe duplicates occur on adjacent =E2=80=9Cpages,=E2=80=9D but I=E2=80=
+=99m not 100% certain
+
+Example workIDs from tonight=E2=80=99s test:
+
+018b30c8-40c1-4279-9ff1-4ac8cc358cf5 (found in 2nd and 3rd page)
+00e9ee2f-4f38-40e7-b472-cdbd91f8cb79 (found in 6th and 7th page)
+
+All duplicates in that specific test are found in pages 2, 3, 5, 6, and 7
+of the 33 total files.
+
+
+Jeff Ryan
+Product Owner =E2=80=93 BI / Utility Intelligence""
+
+--0000000000007f60ba062c15de95
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div style=3D"color:rgb(204,204,204);background-color:rgb(=
+31,31,31);font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace;font-s=
+ize:12px;line-height:18px;white-space:pre"><div><span style=3D"color:rgb(20=
+6,145,120)">Hi, AiDash team.</span></div><br><br><br><div><span style=3D"co=
+lor:rgb(206,145,120)">While doing a full re-load last month to =E2=80=9Chea=
+l=E2=80=9D the data issues from 11/24, we noticed an odd behavior of the wo=
+rk items API endpoint. I don=E2=80=99t *think* it=E2=80=99s causing a probl=
+em since we deduplicate on workId, but we=E2=80=99d like to see if you have=
+ an explanation to ensure that there=E2=80=99s not some nuance we are missi=
+ng. Can you please review and provide feedback?</span></div><br><div><span =
+style=3D"color:rgb(206,145,120)"> </span></div><br><div><span style=3D"colo=
+r:rgb(206,145,120)">Thanks!</span></div><br><div><span style=3D"color:rgb(2=
+06,145,120)"> </span></div><br><div><span style=3D"color:rgb(206,145,120)">=
+Repro Steps.</span></div><br><div><span style=3D"color:rgb(206,145,120)">Be=
+st run off-hours to eliminate any chance if interference from concurrent ed=
+its, but ultimately timing does not matter.</span></div><br><div><span styl=
+e=3D"color:rgb(206,145,120)"> </span></div><br><div><span style=3D"color:rg=
+b(206,145,120)">In PROD, call the work_items endpoint and repeat with limit=
++offset to retrieve all pages. We are using updated_from=3D2023-03-01 to pr=
+esent (2025-01-06 in this case). We are using a page size of 3000.</span></=
+div><div><span style=3D"color:rgb(206,145,120)">Note that in tonight=E2=80=
+=99s test I called via Avista=E2=80=99s proxy API endpoint but I have also =
+run this test directly calling the AiDash API and observed the same behavio=
+r.</span></div><div><span style=3D"color:rgb(206,145,120)">Count the number=
+ of records returned across all responses.</span></div><div><span style=3D"=
+color:rgb(206,145,120)">Count the number of distinct records returned acros=
+s all responses by workId.</span></div><div><span style=3D"color:rgb(206,14=
+5,120)"> </span></div><br><div><span style=3D"color:rgb(206,145,120)"> </sp=
+an></div><br><div><span style=3D"color:rgb(206,145,120)">Observed</span></d=
+iv><br><div><span style=3D"color:rgb(206,145,120)">I=E2=80=99ve attempted t=
+o share a combined JSON file of the result sets with added attributes to in=
+dicate the page/sequence of the API call that returned each record. It=E2=
+=80=99s the first time I=E2=80=99ve tried sharing this way externally, so p=
+lease let me know if it doesn=E2=80=99t work: zip icon aidash_mulesoft_2025=
+0107043500_all_results.zip</span></div><br><div><span style=3D"color:rgb(20=
+6,145,120)"> </span></div><br><div><span style=3D"color:rgb(206,145,120)"> =
+</span></div><br><div><span style=3D"color:rgb(206,145,120)">Using numbers =
+from this evening as an example (approx. 8:30p Pacific time):</span></div><=
+br><div><span style=3D"color:rgb(206,145,120)"> </span></div><br><div><span=
+ style=3D"color:rgb(206,145,120)">Total records/objects retrieved: 97,137</=
+span></div><div><span style=3D"color:rgb(206,145,120)">Total unique records=
+: 96,890 (247 duplicates)</span></div><div><span style=3D"color:rgb(206,145=
+,120)">Count returned by the last API response: 97,137</span></div><div><sp=
+an style=3D"color:rgb(206,145,120)"> </span></div><br><div><span style=3D"c=
+olor:rgb(206,145,120)">Note that in the UAT environment, I did not see this=
+ issue today. The total number of records matches the unique records and th=
+at also agrees with the count returned in the API responses.</span></div><b=
+r><div><span style=3D"color:rgb(206,145,120)"> </span></div><br><div><span =
+style=3D"color:rgb(206,145,120)">Examining the duplicate work items tonight=
+ and in previous runs, a few observations:</span></div><br><div><span style=
+=3D"color:rgb(206,145,120)">Duplicates are never in the same =E2=80=9Cpage=
+=E2=80=9D/response (good)</span></div><div><span style=3D"color:rgb(206,145=
+,120)">When duplicates exist for a workId, I=E2=80=99ve only ever seen two =
+matching records; never 3 or more.</span></div><div><span style=3D"color:rg=
+b(206,145,120)">I believe duplicates occur on adjacent =E2=80=9Cpages,=E2=
+=80=9D but I=E2=80=99m not 100</span><span style=3D"color:rgb(86,156,214)">=
+% c</span><span style=3D"color:rgb(206,145,120)">ertain</span></div><div><s=
+pan style=3D"color:rgb(206,145,120)"> </span></div><br><div><span style=3D"=
+color:rgb(206,145,120)">Example workIDs from tonight=E2=80=99s test:</span>=
+</div><br><div><span style=3D"color:rgb(206,145,120)">018b30c8-40c1-4279-9f=
+f1-4ac8cc358cf5 (found in 2nd and 3rd page)</span></div><div><span style=3D=
+"color:rgb(206,145,120)">00e9ee2f-4f38-40e7-b472-cdbd91f8cb79 (found in 6th=
+ and 7th page)</span></div><div><span style=3D"color:rgb(206,145,120)"> </s=
+pan></div><br><div><span style=3D"color:rgb(206,145,120)">All duplicates in=
+ that specific test are found in pages 2, 3, 5, 6, and 7 of the 33 total fi=
+les.</span></div><br><div><span style=3D"color:rgb(206,145,120)"> </span></=
+div><br><div><span style=3D"color:rgb(206,145,120)">Jeff Ryan</span></div><=
+div><span style=3D"color:rgb(206,145,120)">Product Owner =E2=80=93 BI / Uti=
+lity Intelligence&quot;&quot;</span></div></div></div>
+
+--0000000000007f60ba062c15de95--
