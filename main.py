@@ -21,7 +21,7 @@ email_metadata = email_parser.extract_email_metadata(eml_file_path)
 
 # Understand the email
 email_context = email_translator.decode_client_email(email_metadata)
-
+print(email_context)
 # Create the ticket
-jira_fields = jira_creator.jira_fields(email_context)
-jira_creator.create_ticket(jira_fields)
+#jira_fields = jira_creator.jira_fields(email_context)
+#jira_creator.create_ticket(jira_fields)
