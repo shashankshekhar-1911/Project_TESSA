@@ -1,4 +1,4 @@
-Now, applied changes!
+Now, applied changes!!
 ***Current Code***
 1. Takes client email as a .eml file
 2. Extracts relevant metadata and insights from the email
