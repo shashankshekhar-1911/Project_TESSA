@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Needed Checklist - TESSA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .theme-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .theme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .theme-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 25px;
+            position: relative;
+        }
+        .theme-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .theme-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        .item-count {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .theme-body {
+            padding: 25px;
+        }
+        .priority-section {
+            margin-bottom: 25px;
+        }
+        .priority-header {
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .priority-high {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .priority-medium {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        .priority-low {
+            background: #d1fae5;
+            color: #059669;
+        }
+        .priority-critical {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        .items-list {
+            list-style: none;
+            padding: 0;
+        }
+        .items-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .items-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .items-list li:last-child {
+            border-bottom: none;
+        }
+        .back-link {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .back-link a {
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .back-link a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .search-box {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .search-box input {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            width: 400px;
+            max-width: 90%;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .search-box input:focus {
+            outline: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        @media (max-width: 768px) {
+            .themes-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .stats {
+                gap: 15px;
+            }
+            .stat-card {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📋 Input Needed Checklist</h1>
+        <p>Detailed input requirements for each support theme based on Excel data analysis</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">{{ total_themes }}</div>
+            <div class="stat-label">Support Themes</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ total_items }}</div>
+            <div class="stat-label">Checklist Items</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ total_glossary }}</div>
+            <div class="stat-label">Glossary Entries</div>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Search themes or requirements..." onkeyup="filterThemes()">
+    </div>
+
+    <div class="container">
+        <div class="themes-grid" id="themesGrid">
+            {% for theme_info in theme_data %}
+            <div class="theme-card" data-theme="{{ theme_info.theme|lower }}">
+                <div class="theme-header">
+                    <div class="item-count">{{ theme_info.total_items }} items</div>
+                    <h2 class="theme-title">{{ theme_info.theme }}</h2>
+                    <p class="theme-description">{{ theme_info.description }}</p>
+                </div>
+                
+                <div class="theme-body">
+                    {% for priority, items in theme_info.priority_groups.items %}
+                    {% if items %}
+                    <div class="priority-section">
+                        <div class="priority-header priority-{{ priority|lower }}">
+                            {{ priority }} Priority ({{ items|length }} items)
+                        </div>
+                        <ul class="items-list">
+                            {% for item in items %}
+                            <li>{{ item.input_needed }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="{% url 'welcome' %}">&larr; Back to Dashboard</a>
+    </div>
+
+    <script>
+        function filterThemes() {
+            const searchInput = document.getElementById('searchInput');
+            const filter = searchInput.value.toLowerCase();
+            const themeCards = document.querySelectorAll('.theme-card');
+            
+            themeCards.forEach(card => {
+                const themeTitle = card.querySelector('.theme-title').textContent.toLowerCase();
+                const themeDescription = card.querySelector('.theme-description').textContent.toLowerCase();
+                const items = card.querySelectorAll('.items-list li');
+                let hasMatch = false;
+                
+                // Check if theme title or description matches
+                if (themeTitle.includes(filter) || themeDescription.includes(filter)) {
+                    hasMatch = true;
+                }
+                
+                // Check if any item matches
+                items.forEach(item => {
+                    if (item.textContent.toLowerCase().includes(filter)) {
+                        hasMatch = true;
+                    }
+                });
+                
+                card.style.display = hasMatch ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html> 

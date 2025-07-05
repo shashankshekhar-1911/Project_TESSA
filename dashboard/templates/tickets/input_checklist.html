@@ -1,0 +1,113 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Input Checklist Data - TESSA Support{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-list-check me-2"></i>Support Theme Input Checklist</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">
+                        <i class="fas fa-info-circle me-2"></i>
+                        This data was loaded from the Excel checklist and provides standardized input requirements for each support theme.
+                    </p>
+                    
+                    <!-- Search and Filters -->
+                    <form method="GET" class="mb-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" name="search" class="form-control" 
+                                       placeholder="Search themes or requirements..." 
+                                       value="{{ search_query }}">
+                            </div>
+                            <div class="col-md-3">
+                                <select name="theme" class="form-select">
+                                    <option value="">All Themes</option>
+                                    {% for theme in all_themes %}
+                                    <option value="{{ theme }}" {% if theme == theme_filter %}selected{% endif %}>
+                                        {{ theme }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="priority" class="form-select">
+                                    <option value="">All Priorities</option>
+                                    {% for priority in all_priorities %}
+                                    <option value="{{ priority }}" {% if priority == priority_filter %}selected{% endif %}>
+                                        {{ priority|title }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search me-2"></i>Filter
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Summary Stats -->
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body text-center">
+                                    <h4>{{ total_themes }}</h4>
+                                    <p class="mb-0">Support Themes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-success text-white">
+                                <div class="card-body text-center">
+                                    <h4>{{ total_items }}</h4>
+                                    <p class="mb-0">Total Requirements</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support Themes -->
+                    {% for theme_name, theme_data in themes_data.items %}
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-folder me-2"></i>{{ theme_name }}
+                                </h6>
+                                <span class="badge bg-info">{{ theme_data.total_items }} items</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                {% for item in theme_data.items %}
+                                <div class="col-md-6 mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-{{ item.priority }} me-2">
+                                            {{ item.priority|title }}
+                                        </span>
+                                        <span>{{ item.input_needed }}</span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        No checklist items found. Try adjusting your filters.
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

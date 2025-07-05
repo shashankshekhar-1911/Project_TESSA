@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket {{ ticket.encoded_id }} - TESSA Support</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-robot me-2"></i>TESSA Support AI
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-ticket-alt me-2"></i>
+                            Ticket {{ ticket.encoded_id }}
+                        </h5>
+                        <span class="badge bg-{{ ticket.priority|default:'secondary' }}">
+                            {{ ticket.priority|title|default:'Normal' }}
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h6>{{ ticket.subject }}</h6>
+                        <hr>
+                        <div class="mb-3">
+                            <strong>Description:</strong>
+                            <p class="mt-2">{{ ticket.description|linebreaks }}</p>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Status:</strong> 
+                                <span class="badge bg-info">{{ ticket.status|title }}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Created:</strong> 
+                                {{ ticket.created_at|default:'Unknown' }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- AI Analysis Card -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h6><i class="fas fa-brain me-2"></i>AI Analysis</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <strong>Product:</strong> 
+                            <span class="badge bg-primary">{{ ticket.product|default:'Not Set' }}</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Support Theme:</strong>
+                            <span class="badge bg-success">{{ ticket.support_theme|default:'Not Set' }}</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Severity:</strong>
+                            <span class="badge bg-warning">{{ ticket.severity|default:'Not Set' }}</span>
+                        </div>
+                        <div class="mb-2">
+                            <strong>Type:</strong>
+                            <span class="badge bg-info">{{ ticket.ticket_type|default:'Not Set' }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completeness Card -->
+                {% if completeness_score is not None %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h6><i class="fas fa-check-circle me-2"></i>Completeness Analysis</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Completeness Score:</span>
+                                <span class="fw-bold">{{ completeness_score|floatformat:1 }}%</span>
+                            </div>
+                            <div class="progress mt-2">
+                                <div class="progress-bar 
+                                    {% if completeness_score >= 80 %}bg-success
+                                    {% elif completeness_score >= 60 %}bg-warning
+                                    {% else %}bg-danger{% endif %}" 
+                                    style="width: {{ completeness_score }}%">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% if missing_items %}
+                        <div>
+                            <strong>Missing Information:</strong>
+                            <ul class="list-unstyled mt-2">
+                                {% for item in missing_items %}
+                                <li><i class="fas fa-exclamation-circle text-warning me-2"></i>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- L1 Response Draft -->
+                {% if has_l1_draft %}
+                <div class="card">
+                    <div class="card-header">
+                        <h6><i class="fas fa-edit me-2"></i>L1 Response Draft</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-robot me-2"></i>
+                            AI-generated response draft available
+                        </div>
+                        <button class="btn btn-outline-primary btn-sm" onclick="viewDraft()">
+                            <i class="fas fa-eye me-2"></i>View Draft
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function viewDraft() {
+            // Implementation for viewing L1 response draft
+            alert('L1 Response draft viewing functionality would be implemented here');
+        }
+    </script>
+</body>
+</html> 

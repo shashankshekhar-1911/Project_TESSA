@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TESSA Dashboard</title>
+</head>
+<body>
+    <h1>TESSA Ticket Dashboard</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Subject</th><th>Status</th><th>Priority</th><th>Category</th><th>AI Priority</th><th>View</th>
+        </tr>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.subject }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.priority }}</td>
+            <td>{{ ticket.category }}</td>
+            <td>{{ ticket.ai_priority }}</td>
+            <td><a href="{% url 'ticket-detail' ticket.id %}">Details</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
