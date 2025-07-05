@@ -1,10 +1,20 @@
-***What does the Agent V1 intend to do?***
-1. Reads the incoming email request
-2. Understands the email and extracts relevant metadata for the request
-3. Files the relevant ticket in Jira
-4. Creates an initial response for the L1 human support to send to the client. This could either be just an acknowledge or counter questions to understand the ask better.
-5. If the request requires technical support, creates a ticket for L2 support team
+# TESSA Support AI Platform (Django Edition)
 
+## Features
+- Modular multi-agent pipeline (Email Processing, Categorization, Prioritization, Resolution, Feedback)
+- REST API (Django REST Framework)
+- Dashboard (Django templates)
+- Live Zendesk & Jira integration
+- MCP integration (configurable toggle)
+- Postgres (native) & MongoDB (via mongoengine)
+- Fully dockerized (Docker, Compose)
+- Easy extension for LLM/Bedrock/AgenticAI/MCP
 
-***Notes***
-Rename the .env.example file to .env before using
+## Setup
+
+1. **Clone this repo and copy `.env.example` to `.env`**  
+   Fill in your DB, Zendesk, Jira, and MCP credentials as needed.
+
+2. **Build and run:**
+   ```sh
+   docker-compose up --build

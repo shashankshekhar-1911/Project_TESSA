@@ -1,6 +1,43 @@
-eml-parser>=1.0.0
-langgraph>=0.0.15
-langchain>=0.1.0
-langchain-groq>=0.0.1
-requests>=2.31.0
-python-dotenv>=1.0.0
+# Web Framework
+Django
+djangorestframework
+
+# Database
+psycopg2-binary
+mongoengine
+
+# Environment and Configuration
+python-dotenv
+
+# Data Processing
+pandas
+numpy
+datasets
+
+# Machine Learning and AI
+torch
+sentence-transformers
+pinecone
+openai
+groq
+textblob
+langgraph
+langchain_groq
+langchain
+langchain-core
+
+# Cloud Services
+boto3
+requests
+
+# PDF Processing
+PyPDF2
+
+# Utilities
+tqdm
+python-magic
+jinja2
+
+# Custom Tools
+dlai-tools
+

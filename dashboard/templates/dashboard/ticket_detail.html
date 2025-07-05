@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket {{ ticket.id }}</title>
+</head>
+<body>
+    <h2>Ticket Details (ID: {{ ticket.id }})</h2>
+    <ul>
+        <li><strong>Subject:</strong> {{ ticket.subject }}</li>
+        <li><strong>Description:</strong> {{ ticket.description }}</li>
+        <li><strong>Status:</strong> {{ ticket.status }}</li>
+        <li><strong>Priority:</strong> {{ ticket.priority }}</li>
+        <li><strong>Category:</strong> {{ ticket.category }}</li>
+        <li><strong>AI Priority:</strong> {{ ticket.ai_priority }}</li>
+        <li><strong>Sentiment:</strong> {{ ticket.sentiment }}</li>
+        <li><strong>Impact:</strong> {{ ticket.impact }}</li>
+        <li><strong>Urgency:</strong> {{ ticket.urgency }}</li>
+        <li><strong>Next Action:</strong> {{ ticket.next_action }}</li>
+        <li><strong>Resolution:</strong> {{ ticket.resolution }}</li>
+        <li><strong>Troubleshooting Steps:</strong> {{ ticket.troubleshooting_steps }}</li>
+        <li><strong>Counter Questions:</strong> {{ ticket.counter_questions }}</li>
+        <li><strong>Feedback:</strong> {{ ticket.feedback }}</li>
+    </ul>
+    <a href="{% url 'dashboard-home' %}">Back to Dashboard</a>
+</body>
+</html>
